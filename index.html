@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PARA MI REINA - MIS 15 | BRITHANY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="letter-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="letter-paper">
+            <div class="letter-header">🎀 Para Brithany 🎀</div>
+            <p id="letter-text"></p>
+            <div class="letter-footer">Con amor, Tu Novio Elmer 🥺💗</div>
+        </div>
+    </div>
+</div>
+
+<audio id="bg-music" src="musica/nuestra-cancion.mp3"></audio>
+
+    <div class="main-container">
+        <div class="kitty-ornament top-left">🎀💗</div>
+        <div class="kitty-ornament bottom-right">🎀💗</div>
+
+        <header class="header-section">
+            <h1 class="main-title">Feliz XV Brithany 💗🥺</h1>
+            <h2 class="subtitle">UNA PÁGINA SOLO PARA TI. TE AMO.</h2>
+        </header>
+
+        <section class="photo-gallery">
+            <div class="frame frame-hex kitty-bow"><img src="imagenes/foto1.jpeg" alt="1"></div>
+            <div class="frame frame-hex kitty-bow"><img src="imagenes/foto2.jpeg" alt="2"></div>
+            <div class="frame frame-center">
+                <div class="gold-ring"></div>
+                <img src="imagenes/foto3.png" alt="Centro">
+            </div>
+            <div class="frame frame-hex kitty-bow"><img src="imagenes/foto4.jpeg" alt="4"></div>
+            <div class="frame frame-hex kitty-bow"><img src="imagenes/foto5.jpeg" alt="5"></div>
+        </section>
+
+        <button class="interaction-bar">
+            ‹ GIRA Y TOCA PARA VER MÁS ›
+        </button>
+        
+<section class="secret-cards-section">
+    <h3 class="section-title">Mis Cartitas Secretas 🎀</h3>
+    <div class="seals-container">
+        <div class="seal-item">
+            <div class="envelope seal-lavender">
+                <div class="envelope-flap"></div>
+                <div class="seal-wax">B</div>
+            </div>
+            <p class="seal-text">ABRE CUANDO... <br><strong>ESTÉS FELIZ</strong></p>
+        </div>
+        <div class="seal-item">
+            <div class="envelope seal-gold">
+                <div class="envelope-flap"></div>
+                <div class="seal-wax">B</div>
+            </div>
+            <p class="seal-text">ABRE CUANDO... <br><strong>ME EXTRAÑES</strong></p>
+        </div>
+        <div class="seal-item">
+            <div class="envelope seal-rose">
+                <div class="envelope-flap"></div>
+                <div class="seal-wax">B</div>
+            </div>
+            <p class="seal-text">ABRE CUANDO... <br><strong>QUIERAS UN ABRAZO</strong></p>
+        </div>
+    </div>
+</section>
+
+        <div class="music-player">
+            <div class="player-main">
+                <div class="vinyl-wrapper">
+                    <img src="imagenes/portada-cancion.jpg" alt="Álbum" class="album-cover">
+                    <div class="vinyl-hole"></div>
+                </div>
+                <div class="song-details">
+                    <p class="song-title">NUESTRA CANCIÓN</p>
+                    <p class="artist-name">Brithany 💗</p>
+                    <div class="progress-bar"><div class="fill"></div></div>
+                </div>
+                <div class="player-controls">
+                    <button class="ctrl-btn">⏮</button>
+                    <button class="play-btn-main">▶</button>
+                    <button class="ctrl-btn">⏭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+const modal = document.getElementById("letter-modal");
+const letterText = document.getElementById("letter-text");
+const closeBtn = document.querySelector(".close-modal");
+const audio = document.getElementById("bg-music");
+const playBtn = document.querySelector(".play-btn-main");
+
+// Mensajes personalizados para cada carta
+const mensajes = {
+    "ESTÉS FELIZ": "Tu sonrisa es lo más lindo de este mundo. ¡Nunca dejes de brillar, mi reina!",
+    "ME EXTRAÑES": "Aunque no esté ahí, siempre estoy pensando en ti. Falta poco para vernos. ❤️",
+    "QUIERAS UN ABRAZO": "Cierra los ojos y siente este abrazo virtual. ¡Te amo muchísimo!"
+};
+
+// Abrir carta
+document.querySelectorAll('.envelope').forEach(envelope => {
+    envelope.addEventListener('click', () => {
+        const tipo = envelope.parentElement.querySelector('strong').innerText;
+        letterText.innerText = mensajes[tipo] || "Te amo mucho";
+        modal.style.display = "block";
+    });
+});
+
+// Cerrar carta
+closeBtn.onclick = () => modal.style.display = "none";
+window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; };
+
+// Control de Música
+playBtn.addEventListener('click', () => {
+    if (audio.paused) {
+        audio.play();
+        playBtn.innerText = "⏸";
+        document.querySelector('.vinyl-wrapper').style.animationPlayState = 'running';
+    } else {
+        audio.pause();
+        playBtn.innerText = "▶";
+        document.querySelector('.vinyl-wrapper').style.animationPlayState = 'paused';
+    }
+});
+    </script>
+</body>
+</html>
